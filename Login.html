@@ -1,0 +1,183 @@
+
+<!--  readyState  -->
+<!--  0 － （未初始化）还没有调用send()方法  -->
+<!--  1 － （载入）已调用send()方法，正在发送请求  -->
+<!--  2 － （载入完成）send()方法执行完成，已经接收到全部响应内容  -->
+<!--  3 － （交互）正在解析响应内容  -->
+<!--  4 － （完成）响应内容解析完成，可以在客户端调用了  -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <link rel="short icon" href="Resource/icon.png">
+    <link rel="stylesheet" href="ExternalStyle.css">
+    <script type="text/javascript" src="CommonClass.js"></script>
+    <title>傅嘉豪</title>
+
+    <style>
+        .L_form_div{
+            width: 100%;
+        }
+
+        .L_form_inner_div{
+            width: 90%;
+            margin: 0 auto;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            background: white;
+            height: 100px;
+        }
+
+        .L_form_inner_div div{
+            height: 50px;
+            border-bottom: 1px solid #cccccc;
+        }
+
+        .L_form_inner_div div span{
+            padding-left: 15px;
+            font-size: 20px;
+            line-height: 50px;
+        }
+
+        input{
+            /*outline: medium;*/
+            border: none;
+            outline: none;
+        }
+
+        .L_external_login_div{
+            width: 100%;
+        }
+
+        .L_login_div{
+            width: 90%;
+            height: 50px;
+            background: rgb(36,92,161);
+            border-radius: 10px;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        .L_login_div input{
+            border-radius: 10px;
+            width: 100%;
+            background: rgb(36,92,161);
+            color: white;
+            font-size: 20px;
+            line-height: 50px;
+            height: 50px;
+        }
+        .Lg_external_div{
+            left:50%;
+            top:50%;
+            width: 60px;
+            margin: 0 auto;
+            margin-top: 50px;
+            margin-bottom: 40px;
+        }
+        #L_account{
+            height: 30px;
+            width: 247px;
+            font-size: 17px;
+            line-height: 30px;
+        }
+        #L_pwd{
+            height: 30px;
+            width: 247px;
+            font-size: 17px;
+            line-height: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<!--第一部分-->
+<header>
+    <span>登录</span>
+</header>
+
+<!--第二部分-->
+<div class="Lg_external_div">
+    <img src="Resource/head.png" alt="">
+</div>
+
+<script>
+    <!--函数声明-->
+//    function GainSum(a,b){
+//        var c=a+b;
+//          return c;
+//    }
+    //函数表达式
+//    var bb =function(a,b){
+//        var cc=a+b;
+//        return cc;
+//    }
+</script>
+<form action="">
+    <div class="L_form_div">
+        <div class="L_form_inner_div">
+            <div>
+                <span>用户名:</span>
+                <input type="text" id="L_account"><br>
+            </div>
+
+            <div>
+                <span>密　码:</span>
+                <input type="password" id="L_pwd"><br>
+            </div>
+        </div>
+    </div>
+
+    <div class="L_external_login_div">
+        <div class="L_login_div">
+            <input type="button"  class="L_login_btn" value="登录" id="btn">
+        </div>
+    </div>
+
+
+</form>
+
+
+
+
+<script>
+
+    //  账号hskj 密码123456
+    // var btn = document.querySelector("#L_btn");
+    // btn.onclick=function () {
+    //     var account = encodeURIComponent(document.querySelector("#L_account").value);
+    //     var password = encodeURIComponent(document.querySelector("#L_pwd").value);
+    //     if(account=="hskj"&&password="123456"){
+    //         window.location.href="DropletService.html";
+    //     }
+    //     else {
+    //         window.location.href="http://www.huashankeji.com";
+    //     }
+    // }
+    //获取登录按钮
+    var btn=document.querySelector("#btn");
+    //注册点击事件
+    btn.onclick=function () {
+        //获取用户名和密码框中的内容
+        var userName = encodeURIComponent(document.querySelector("#L_account").value);
+        var password = encodeURIComponent(document.querySelector("#L_pwd").value);
+        var par3 = "username="+userName+"&pwd="+password;
+        requestMethod('post','login',par3,function (returnStr){
+            if(returnStr == "登录成功"){
+                window.localStorage.setItem("userName",userName); //存储数据
+                location.href="DropletService.html";
+            }
+            else{
+                alert(returnStr);
+            }
+        });
+
+    }
+</script>
+
+
+
+</body>
+</html>

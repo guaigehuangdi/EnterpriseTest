@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <link rel="short icon" href="Resource/icon.png">
+    <link rel="stylesheet" href="ExternalStyle.css">
+    <script type="text/javascript" src="CommonClass.js"></script>
+    <title>傅嘉豪</title>
+
+    <style>
+        article{
+            margin: 20px;
+        }
+
+        h3{
+            color: red;
+            font-size: 18px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #dddddd;
+        }
+
+        h4{
+            font-size: 14px;
+        }
+
+        article p{
+            font-size: 12px;
+            text-indent: 2em;
+            line-height: 2em;
+        }
+    </style>
+</head>
+<body>
+
+
+
+<header>
+    <span>平台风采</span>
+</header>
+
+<section class="DS_second_section">
+    <!--用来加载图片用的标签-->
+    <img src="Resource/banner4.png" alt="">
+</section>
+
+<!--文案标签，一大段篇文字-->
+<article>
+    <!--h1-h6,文字大小依次递减-->
+    <h3 id="title"></h3>
+    <h4 id="subTitle"></h4>
+    <p id="info"></p>
+</article>
+
+<script>
+    requestMethod('get','aboutus',"",function (returnStr){
+        var title_content = document.getElementById("title");
+        var subTitle_content = document.getElementById("subTitle");
+        var info_content = document.getElementById("info");
+
+        title_content.innerHTML = returnStr.title;
+        subTitle_content.innerHTML = returnStr.subTitle;
+        info_content.innerHTML = returnStr.info;
+    });
+
+</script>
+
+<footer>
+    <a href="DropletService.html"><img src="Resource/nav10.png" alt=""><span>小滴服务</span></a>
+    <a href="EnterpriseProject.html"><img src="Resource/nav20.png" alt=""><span>企业项目</span></a>
+    <a href="ServiceProcess.html"><img src="Resource/nav30.png" alt=""><span>服务流程</span></a>
+    <a href=""><img src="Resource/nav41.png" alt=""><span style="color: red">平台风采</span></a>
+    <a href="MyDroplet.html"><img src="Resource/nav50.png" alt=""><span>我的小滴</span></a>
+</footer>
+
+
+</body>
+</html>
